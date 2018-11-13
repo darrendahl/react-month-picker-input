@@ -120,6 +120,12 @@ class MonthPickerInput extends Component<IProps, IState> {
     }
   };
 
+  onKeyPress: (e): void => {
+    if(e.keyCode === 9 || e.keyCode === 13){
+      this.setState({ showCalendar: false });
+    }
+  };
+
   onCalendarOutsideClick = (e): void => {
     this.setState({ showCalendar: this.input.input == e.target });
   };
@@ -147,6 +153,7 @@ class MonthPickerInput extends Component<IProps, IState> {
       placeholder: this.t.dateFormat(),
       type: 'text',
       onBlur: this.onInputBlur,
+      onKeyPress: this.onKeyPress,
       onFocus: this.onInputFocus,
       onChange: this.onInputChange,
     }, this.props.inputProps)
