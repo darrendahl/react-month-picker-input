@@ -27,7 +27,7 @@ export const valuesFromMask = (maskedValue: string): [number, number] => {
   const month = monthNum - 1;
 
   // TODO: make base dynamic
-  const year = 2000 + parseInt(yearVal);
+  const year = parseInt(yearVal) < 1000 ? 2000 + parseInt(yearVal) : parseInt(yearVal);
 
   return [month, year];
 };
