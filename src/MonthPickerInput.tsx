@@ -120,7 +120,7 @@ class MonthPickerInput extends Component<IProps, IState> {
     }
   };
 
-  onKeyPress: (e): void => {
+  onKeyPress = (e): void => {
     if(e.keyCode === 9 || e.keyCode === 13){
       this.setState({ showCalendar: false });
     }
