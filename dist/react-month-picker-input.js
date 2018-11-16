@@ -356,7 +356,7 @@ var MonthPickerInput = /** @class */ (function (_super) {
                 _this.setState({ showCalendar: true });
             }
         };
-        _this.onKeyPress = function (e) {
+        _this.onKeyDown = function (e) {
             if (e.keyCode === 9 || e.keyCode === 13) {
                 _this.setState({ showCalendar: false });
             }
@@ -377,7 +377,7 @@ var MonthPickerInput = /** @class */ (function (_super) {
                 placeholder: _this.t.dateFormat(),
                 type: 'text',
                 onBlur: _this.onInputBlur,
-                onKeyPress: _this.onKeyPress,
+                onKeyDown: _this.onKeyDown,
                 onFocus: _this.onInputFocus,
                 onChange: _this.onInputChange,
             }, _this.props.inputProps);
