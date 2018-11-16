@@ -153,7 +153,7 @@ class MonthPickerInput extends Component<IProps, IState> {
       placeholder: this.t.dateFormat(),
       type: 'text',
       onBlur: this.onInputBlur,
-      onKeyPress: this.onKeyPress,
+      onKeyDown: this.onKeyDown,
       onFocus: this.onInputFocus,
       onChange: this.onInputChange,
     }, this.props.inputProps)
