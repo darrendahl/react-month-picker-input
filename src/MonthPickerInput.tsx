@@ -109,7 +109,7 @@ class MonthPickerInput extends Component<IProps, IState> {
   };
 
   onInputBlur = (e): void => {
-    if (!this.wrapper.contains(e.target)) {
+    if (!this.wrapper.contains(e.target) || e.keyCode === 9 || e.keyCode === 13) {
       this.setState({ showCalendar: false })
     }
   };

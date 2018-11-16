@@ -347,7 +347,7 @@ var MonthPickerInput = /** @class */ (function (_super) {
             }
         };
         _this.onInputBlur = function (e) {
-            if (!_this.wrapper.contains(e.target)) {
+            if (!_this.wrapper.contains(e.target) || e.keyCode === 9 || e.keyCode === 13) {
                 _this.setState({ showCalendar: false });
             }
         };
