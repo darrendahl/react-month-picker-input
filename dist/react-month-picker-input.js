@@ -476,7 +476,7 @@ var MonthCalendar = /** @class */ (function (_super) {
     function MonthCalendar(props) {
         var _this = _super.call(this, props) || this;
         _this.onChange = function (selectedYear, selectedMonth) {
-            if (typeof selectedYear == 'number' && typeof selectedMonth == 'number') {
+            if (typeof selectedYear == "number" && typeof selectedMonth == "number") {
                 _this.props.onChange(selectedYear, selectedMonth);
             }
         };
@@ -490,11 +490,37 @@ var MonthCalendar = /** @class */ (function (_super) {
         };
         _this.previous = function () {
             var startYear = _this.state.years[0] - 12;
-            _this.updateYears(startYear);
+            if (_this.state.currentView === __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* VIEW_YEARS */]) {
+                _this.updateYears(startYear);
+            }
+            else {
+                _this.previousYear();
+            }
         };
         _this.next = function () {
             var startYear = _this.state.years[11] + 1;
-            _this.updateYears(startYear);
+            if (_this.state.currentView === __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* VIEW_YEARS */]) {
+                _this.updateYears(startYear);
+            }
+            else {
+                _this.nextYear();
+            }
+        };
+        _this.previousYear = function () {
+            var selectedYear = _this.state.selectedYear;
+            if (!selectedYear)
+                return;
+            _this.setState({
+                selectedYear: selectedYear - 1
+            });
+        };
+        _this.nextYear = function () {
+            var selectedYear = _this.state.selectedYear;
+            if (!selectedYear)
+                return;
+            _this.setState({
+                selectedYear: selectedYear + 1
+            });
         };
         _this.updateYears = function (startYear) {
             var years = Array.from({ length: 12 }, function (v, k) { return k + startYear; });
@@ -506,14 +532,14 @@ var MonthCalendar = /** @class */ (function (_super) {
         _this.renderMonths = function () {
             var selectedMonth = _this.state.selectedMonth;
             return _this.t.monthNames().map(function (monthName, index) {
-                var selectedKlass = selectedMonth === index ? 'selected_cell' : '';
+                var selectedKlass = selectedMonth === index ? "selected_cell" : "";
                 return (__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { key: index, onClick: function () { return _this.selectMonth(index); }, className: "col_mp span_1_of_3_mp " + selectedKlass }, _this.t.monthName(monthName)));
             });
         };
         _this.renderYears = function () {
             var selectedYear = _this.state.selectedYear;
             return _this.state.years.map(function (year, i) {
-                var selectedKlass = selectedYear === year ? 'selected_cell' : '';
+                var selectedKlass = selectedYear === year ? "selected_cell" : "";
                 return (__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", { key: i, onClick: function () { return _this.selectYear(year); }, className: "col_mp span_1_of_3_mp " + selectedKlass }, year));
             });
         };
@@ -524,15 +550,15 @@ var MonthCalendar = /** @class */ (function (_super) {
             years: Array.from({ length: 12 }, function (v, k) { return k + startYear; }),
             selectedYear: year,
             selectedMonth: month,
-            currentView: year ? __WEBPACK_IMPORTED_MODULE_3__constants__["a" /* VIEW_MONTHS */] : __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* VIEW_YEARS */],
+            currentView: year ? __WEBPACK_IMPORTED_MODULE_3__constants__["a" /* VIEW_MONTHS */] : __WEBPACK_IMPORTED_MODULE_3__constants__["b" /* VIEW_YEARS */]
         };
         return _this;
     }
     MonthCalendar.prototype.componentWillReceiveProps = function (nextProps) {
         var year = nextProps.year, month = nextProps.month;
         var _a = this.state, selectedYear = _a.selectedYear, selectedMonth = _a.selectedMonth;
-        if (typeof year == 'number' &&
-            typeof month == 'number' &&
+        if (typeof year == "number" &&
+            typeof month == "number" &&
             (year !== selectedYear || month !== selectedMonth)) {
             this.setState({
                 selectedYear: year,
@@ -550,7 +576,6 @@ var MonthCalendar = /** @class */ (function (_super) {
     };
     return MonthCalendar;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]));
-;
 /* harmony default export */ __webpack_exports__["a"] = (MonthCalendar);
 
 
